@@ -1,0 +1,27 @@
+img {
+  max-width: 200px;
+  padding: 0 20px 20px 20px;
+  margin: 0 auto;
+  display: block;
+  &:hover {
+    opacity: .6;
+  }
+}
+nav {
+  text-align: center;
+  padding-bottom: 20px;
+}
+a {
+  color: red;
+  text-decoration: none;
+  padding: 20px;
+  &:hover {
+    color: black;
+  }
+}
+.active-link {
+  color: black;
+  &:hover {
+    color: #333;
+  }
+}
