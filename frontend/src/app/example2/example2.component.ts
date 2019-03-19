@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// declare var jQuery:any;
 
 @Component({
   selector: 'app-example2',
@@ -9,7 +10,6 @@ export class Example2Component implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }
