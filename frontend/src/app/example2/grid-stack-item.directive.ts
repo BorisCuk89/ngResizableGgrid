@@ -24,13 +24,14 @@ export class GridStackItemDirective {
     let nativeElement = this.el.nativeElement;
     let cannotResize: string = this.canResize ? "yes" : "no";
     let elementText: string = '<div class="grid-stack-item-content">' + nativeElement.innerHTML + '</div>';
-    // TODO: Find the Angular(tm) way to do this ...
+
     nativeElement.innerHTML = elementText;
 
     renderer.setElementAttribute(nativeElement, "data-gs-x", String(this.x));
     renderer.setElementAttribute(nativeElement, "data-gs-y", String(this.y));
     renderer.setElementAttribute(nativeElement, "data-gs-width", String(this.w));
     renderer.setElementAttribute(nativeElement, "data-gs-height", String(this.h));
+
     if(this.minWidth) {
       renderer.setElementAttribute(nativeElement, "data-gs-min-width", String(this.minWidth));
     }

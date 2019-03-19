@@ -10,10 +10,10 @@ export class GridStackDirective implements OnInit {
   @Input() animate: boolean;
 
   constructor(
-      private el: ElementRef,
-      private renderer: Renderer
+    private el: ElementRef,
+    private renderer: Renderer
   ) {
-      renderer.setElementAttribute(el.nativeElement, "class", "grid-stack");
+    renderer.setElementAttribute(el.nativeElement, "class", "grid-stack");
   }
 
   ngOnInit() {
@@ -23,18 +23,9 @@ export class GridStackDirective implements OnInit {
 
     renderer.setElementAttribute(nativeElement, "data-gs-width", String(this.w));
     if(animate == "yes") {
-        renderer.setElementAttribute(nativeElement, "data-gs-animate", animate);
+      renderer.setElementAttribute(nativeElement, "data-gs-animate", animate);
     }
 
-    let options = {
-        cellHeight: 80,
-        verticalMargin: 10
-    };
-
-    // TODO: listen to an event here instead of just waiting for the time to expire
-    setTimeout(function () {
-        $('.grid-stack').gridstack(options);
-    }, 300);
   }
 
 }
