@@ -1,4 +1,5 @@
 <div class="container">
+  <button (click)="AddWidget()">Add Widget</button>
   <div gridStack w="12" animate="true">
     <div gridStackItem
       *ngFor="let widget of widgets;let $index = index;"

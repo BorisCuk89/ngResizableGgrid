@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ElementRef, Renderer } from '@angular/core';
 declare var $: any; // JQuery
 
 @Component({
@@ -7,6 +7,14 @@ declare var $: any; // JQuery
   styleUrls: ['./example2.component.scss']
 })
 export class Example2Component implements OnInit {
+  
+  constructor(
+    private cd: ChangeDetectorRef,
+    private el: ElementRef,
+    private renderer: Renderer
+  ) {
+    renderer.setElementAttribute(el.nativeElement, "class", "grid-stack-item");
+  }
 
   public widgets: any[] = [
     {
@@ -53,24 +61,39 @@ export class Example2Component implements OnInit {
     },
   ];
 
-  constructor() {
-  }
-
   ngOnInit() {
     let options = {
       cellHeight: 80,
       verticalMargin: 0
     };
 
-    // TODO: listen to an event here instead of just waiting for the time to expire
     setTimeout(function () {
       $('.grid-stack').gridstack(options).on('dragstop', function(event, ui) {
-        var grid = this;
-        var element = event.target;
-        console.log('grid', grid);
-        // console.log('element', element);
-    });;
+        let grid = this;
+        let element = event.target;
+      });;
     }, 300);
-   }
+    
+    console.log('data init', this.widgets);
+
+  }
+  
+  AddWidget() {
+
+    let options = {
+      cellHeight: 80,
+      verticalMargin: 0
+    };
+
+    this.widgets.push({x: '0', y: '0', w: '4', h: '1', text: 'ad'});
+    this.cd.detectChanges();
+
+    setTimeout(function () {
+      let grids = $('.grid-stack').data('gridstack');
+      grids.add_widget(this.widgets);
+    }, 200);
+
+    console.log('data', this.widgets);
+}
 
 }
